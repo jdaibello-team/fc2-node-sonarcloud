@@ -1,8 +1,9 @@
 name: ci-sonarcloud
+
 on:
   pull_request:
     branches:
-      - main
+      - develop
 
 jobs:
   run-ci:
@@ -13,6 +14,7 @@ jobs:
         with:
           node-version: "14"
           cache: "npm"
+      - run: npm install
       - run: npm run test
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
